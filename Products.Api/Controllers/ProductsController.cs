@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.FeatureManagement;
+using Microsoft.FeatureManagement.Mvc;
 using Products.Api.Data;
 using Products.Api.Features;
 using Products.Api.Models;
@@ -34,6 +35,7 @@ public sealed class ProductsController(
 
     [HttpGet("{id:guid}")]
     [MapToApiVersion("1")]
+    [FeatureGate(FeatureFlags.UseV1ProductApi)]
     public async Task<ActionResult<ProductResponseV1>> GetProductV1(Guid id)
     {
         if (!await featureManager.IsEnabledAsync(FeatureFlags.UseV1ProductApi))
@@ -62,6 +64,7 @@ public sealed class ProductsController(
 
     [HttpGet("{id:guid}")]
     [MapToApiVersion("2")]
+    [FeatureGate(FeatureFlags.UseV2ProductApi)]
     public async Task<ActionResult<ProductResponseV2>> GetProductV2(Guid id)
     {
         if (!await featureManager.IsEnabledAsync(FeatureFlags.UseV2ProductApi))

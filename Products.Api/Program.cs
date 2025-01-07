@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.FeatureManagement;
 using Products.Api.Data;
 using Products.Api.Extensions;
+using Products.Api.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +34,8 @@ builder.Services.AddApiVersioning(options =>
     options.SubstituteApiVersionInUrl = true;
 });
 
-builder.Services.AddFeatureManagement();
+builder.Services.AddFeatureManagement()
+    .WithTargeting<UserTargetingContext>();
 
 var app = builder.Build();
 

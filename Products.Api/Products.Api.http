@@ -4,7 +4,9 @@
 GET {{HostAddress}}/v1/products
 
 ### V1 product
-GET {{HostAddress}}/v1/products/83878326-ae30-43e0-aa64-e2721aa9cb16
+GET {{HostAddress}}/v1/products/5e638c84-71ca-404b-b1f8-20ab634c101a
 
 ### V2 product
-GET {{HostAddress}}/v2/products/13c55cff-fc46-46ea-9bd1-7c5352610b2a
+GET {{HostAddress}}/v2/products/8b50b22c-7675-4aa5-b841-dbb568bf4576
+X-User-Id: user1
+X-User-Groups: beta-testers, internal-users
