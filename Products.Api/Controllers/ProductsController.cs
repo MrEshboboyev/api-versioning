@@ -1,7 +1,9 @@
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.FeatureManagement;
 using Products.Api.Data;
+using Products.Api.Features;
 using Products.Api.Models;
 
 namespace Products.Api.Controllers;
@@ -12,7 +14,8 @@ namespace Products.Api.Controllers;
 [Route("api/v{version:apiVersion}/products")]
 public sealed class ProductsController(
     ProductsDbContext context,
-    ILogger<ProductsController> logger) : ControllerBase
+    ILogger<ProductsController> logger,
+    IFeatureManager featureManager) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<List<ProductResponseV1>>> GetProducts()
@@ -33,6 +36,11 @@ public sealed class ProductsController(
     [MapToApiVersion("1")]
     public async Task<ActionResult<ProductResponseV1>> GetProductV1(Guid id)
     {
+        if (!await featureManager.IsEnabledAsync(FeatureFlags.UseV1ProductApi))
+        {
+            return NotFound();
+        }
+        
         var response = await context.Products
             .Where(p => p.Id == id)
             .Select(p => new ProductResponseV1
@@ -56,6 +64,11 @@ public sealed class ProductsController(
     [MapToApiVersion("2")]
     public async Task<ActionResult<ProductResponseV2>> GetProductV2(Guid id)
     {
+        if (!await featureManager.IsEnabledAsync(FeatureFlags.UseV2ProductApi))
+        {
+            return NotFound();
+        }
+        
         var response = await context.Products
             .Where(p => p.Id == id)
             .Select(p => new ProductResponseV2

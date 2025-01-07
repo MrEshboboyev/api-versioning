@@ -1,5 +1,6 @@
 using Asp.Versioning;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.FeatureManagement;
 using Products.Api.Data;
 using Products.Api.Extensions;
 
@@ -31,6 +32,8 @@ builder.Services.AddApiVersioning(options =>
     options.GroupNameFormat = "'v'VVV";
     options.SubstituteApiVersionInUrl = true;
 });
+
+builder.Services.AddFeatureManagement();
 
 var app = builder.Build();
 

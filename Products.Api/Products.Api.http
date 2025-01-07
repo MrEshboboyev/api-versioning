@@ -4,7 +4,7 @@
 GET {{HostAddress}}/v1/products
 
 ### V1 product
-GET {{HostAddress}}/v1/products/5f2d5b4c-3cc4-417b-99e6-8ded626e9538
+GET {{HostAddress}}/v1/products/83878326-ae30-43e0-aa64-e2721aa9cb16
 
 ### V2 product
-GET {{HostAddress}}/v2/products/d6a20469-d656-404f-bf61-997cf52065a8
+GET {{HostAddress}}/v2/products/13c55cff-fc46-46ea-9bd1-7c5352610b2a
