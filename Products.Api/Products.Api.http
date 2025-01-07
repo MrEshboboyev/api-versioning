@@ -1,6 +1,10 @@
-@Products.Api_HostAddress = http://localhost:5076
+@HostAddress=https://localhost:7043/api
 
-GET {{Products.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### V1 products
+GET {{HostAddress}}/v1/products
 
-###
+### V1 product
+GET {{HostAddress}}/v1/products/5f2d5b4c-3cc4-417b-99e6-8ded626e9538
+
+### V2 product
+GET {{HostAddress}}/v2/products/d6a20469-d656-404f-bf61-997cf52065a8
