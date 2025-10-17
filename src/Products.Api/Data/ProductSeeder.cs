@@ -16,7 +16,16 @@ public class ProductSeeder(ProductsDbContext context)
                 Currency = "USD",
                 IsDiscounted = false,
                 InStock = true,
-                Quantity = 100
+                Quantity = 100,
+                Description = "A high-quality product A",
+                Tags = "electronics,tech,gadget",
+                Category = "Electronics",
+                Department = "Technology",
+                Views = 150,
+                Purchases = 25,
+                Rating = 4.5,
+                ReviewsCount = 12,
+                DiscountedPrice = null
             },
             new Product
             {
@@ -27,7 +36,16 @@ public class ProductSeeder(ProductsDbContext context)
                 Currency = "USD",
                 IsDiscounted = true,
                 InStock = true,
-                Quantity = 200
+                Quantity = 200,
+                Description = "An improved version of product B",
+                Tags = "home,utility,improved",
+                Category = "Home",
+                Department = "Household",
+                Views = 320,
+                Purchases = 87,
+                Rating = 4.2,
+                ReviewsCount = 34,
+                DiscountedPrice = 12.99m
             }
         };
 
@@ -46,4 +64,15 @@ public sealed class Product
     public bool IsDiscounted { get; set; }
     public bool InStock { get; set; }
     public int Quantity { get; set; }
+    
+    // V3 additional fields
+    public string? Description { get; set; }
+    public string? Tags { get; set; }
+    public string? Category { get; set; }
+    public string? Department { get; set; }
+    public int Views { get; set; }
+    public int Purchases { get; set; }
+    public double Rating { get; set; }
+    public int ReviewsCount { get; set; }
+    public decimal? DiscountedPrice { get; set; }
 }
