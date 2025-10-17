@@ -8,7 +8,7 @@ using Products.Api.Features;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddHttpContextAccessor();
 
@@ -37,11 +37,22 @@ builder.Services.AddApiVersioning(options =>
 builder.Services.AddFeatureManagement()
     .WithTargeting<UserTargetingContext>();
 
+// Add NSwag services
+builder.Services.AddSwaggerDocument(config =>
+    config.PostProcess = (settings =>
+    {
+        settings.Info.Title = "Products API";
+        settings.Info.Version = "v1";
+        settings.Info.Description = "An API for managing products with versioning and feature flags.";
+    }));
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    // Use NSwag middleware
+    app.UseOpenApi();
+    app.UseSwaggerUi();
 }
 
 app.UseHttpsRedirection();

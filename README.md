@@ -8,10 +8,12 @@ This repository demonstrates how to implement **API versioning**, **feature flag
 - **API Versioning**: Handle multiple versions of your API for backward compatibility.  
 - **Feature Flags**: Toggle features on or off without redeploying code.  
 - **Feature Flag Targeting**: Customize feature availability based on user segments, environments, or conditions.  
+- **API Documentation**: Auto-generated API documentation using NSwag  
 
 ### Tools and Libraries  
 - **ASP.NET Core**: Build a scalable and modular API.  
 - **EF Core with In-Memory DB**: Simulates real-world database operations in memory for development and testing.  
+- **NSwag**: Generates Swagger/OpenAPI documentation and client code  
 
 ## 📂 Repository Structure  
 
@@ -38,7 +40,11 @@ cd api-versioning
 dotnet run --project src/Products.Api 
 ```  
 
-### Step 3: Test the Endpoints  
+### Step 3: Access API Documentation  
+Once the application is running, you can access the auto-generated API documentation at:  
+- Swagger UI: `http://localhost:5076/swagger`  
+
+### Step 4: Test the Endpoints  
 Use a tool like Postman or Curl to interact with the API.  
 
 ## 🌐 API Endpoints  
@@ -112,6 +118,17 @@ public sealed class ProductsController(
     } 
 ```  
 
+## 📚 API Documentation with NSwag  
+
+This project now includes NSwag for automatic API documentation generation. NSwag provides:  
+- Swagger UI for interactive API exploration  
+- OpenAPI specification generation  
+- Client code generation capabilities  
+
+To access the documentation:  
+1. Run the application using `dotnet run --project src/Products.Api`  
+2. Navigate to `http://localhost:5076/swagger` in your browser  
+
 ## 🧪 Testing  
 The repository includes unit and integration tests to ensure feature flags and versioning work as expected.  
 
@@ -136,6 +153,7 @@ public void ToggleFeature_ShouldUpdateFlagState()
 2. **Dynamic Features**: Control application behavior without redeployment using feature flags.  
 3. **Scalable Design**: Build APIs with maintainable and extensible patterns.  
 4. **Real-World Examples**: Hands-on demonstration of EF Core with in-memory DB.  
+5. **API Documentation**: Auto-generated documentation for easier API consumption  
 
 ## 🏗 About the Author  
 This project was developed by [MrEshboboyev](https://github.com/MrEshboboyev), who is passionate about building scalable, maintainable, and high-quality software solutions.  
@@ -144,7 +162,7 @@ This project was developed by [MrEshboboyev](https://github.com/MrEshboboyev), w
 This project is licensed under the MIT License. Feel free to use and adapt the code for your own projects.  
 
 ## 🔖 Tags  
-C#, ASP.NET Core, API Versioning, Feature Flags, Feature Targeting, EF Core, In-Memory Database, Backend Development, Software Architecture, Feature Management  
+C#, ASP.NET Core, API Versioning, Feature Flags, Feature Targeting, EF Core, In-Memory Database, Backend Development, Software Architecture, Feature Management, NSwag, Swagger, OpenAPI  
 
 ---  
 
